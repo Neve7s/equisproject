@@ -78,7 +78,7 @@ export function Sidebar() {
         <div className="sidebar-footer">
           <div className="sidebar-footer-links">
             <a
-              href="https://github.com"
+              href="https://github.com/Neve7s/equisproject"
               target="_blank"
               rel="noopener noreferrer"
               className="sidebar-link"

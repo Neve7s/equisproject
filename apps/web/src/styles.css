@@ -627,3 +627,127 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   .qr-preview { min-height: 240px; padding: 24px; }
   .qr-preview-img { max-width: 220px; }
 }
+
+/* ─── UNIT CONVERTER ────────────────────── */
+.conv-layout { display: flex; flex-direction: column; gap: 20px; padding: 20px 32px 64px; max-width: 640px; margin: 0 auto; }
+.conv-categories { display: flex; gap: 8px; flex-wrap: wrap; }
+.conv-cat-btn {
+  padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 500;
+  background: var(--surface-input); border: 1px solid var(--border); color: var(--text-secondary);
+  cursor: pointer; transition: all 0.15s;
+}
+.conv-cat-btn:hover { border-color: var(--border-hover); color: var(--text); }
+.conv-cat-active { background: var(--accent); color: #000; border-color: var(--accent); }
+[data-theme="light"] .conv-cat-active { color: #fff; }
+.conv-row { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.conv-field { flex: 1; min-width: 100px; display: flex; flex-direction: column; gap: 6px; }
+.conv-field-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+.conv-swap {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--surface-input);
+  border: 1px solid var(--border); color: var(--text); font-size: 18px;
+  cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center;
+}
+.conv-swap:hover { border-color: var(--accent); color: var(--accent); }
+.conv-result { text-align: center; }
+.conv-result-value { font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
+.conv-result-equals { font-size: 20px; color: var(--text-muted); margin-bottom: 4px; }
+.conv-result-output { font-size: 28px; font-weight: 700; color: var(--accent); font-family: var(--font-display); }
+@media (max-width: 640px) {
+  .conv-layout { padding: 16px 16px 64px; }
+  .conv-row { flex-direction: column; }
+  .conv-field { width: 100%; }
+  .conv-swap { align-self: center; }
+}
+
+/* ─── PACKING LIST ────────────────────── */
+.pl-layout { display: grid; grid-template-columns: 1fr 280px; gap: 20px; padding: 20px 32px 64px; }
+.pl-form { display: flex; flex-direction: column; gap: 16px; }
+.pl-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pl-items { display: flex; flex-direction: column; gap: 12px; }
+.pl-item {
+  border: 1px solid var(--border); border-radius: var(--r-md); padding: 12px;
+  background: var(--surface-input); transition: border-color 0.15s;
+}
+.pl-item:hover { border-color: var(--border-hover); }
+.pl-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.pl-item-num { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+.pl-item-fields { display: flex; flex-direction: column; gap: 8px; }
+.pl-item-desc {
+  width: 100%; background: var(--surface-input); border: 1px solid var(--border);
+  border-radius: var(--r-md); color: var(--text); font-size: 13px;
+  padding: 8px 10px; outline: none; transition: border-color 0.15s;
+}
+.pl-item-desc:focus { border-color: var(--border-focus); }
+.pl-item-desc::placeholder { color: var(--placeholder); }
+.pl-item-nums { display: flex; gap: 8px; flex-wrap: wrap; }
+.pl-num-field { display: flex; flex-direction: column; gap: 2px; min-width: 70px; flex: 1; }
+.pl-num-field span { font-size: 10px; color: var(--text-muted); font-weight: 500; }
+.pl-num-field input {
+  background: var(--surface-input); border: 1px solid var(--border); border-radius: var(--r-sm);
+  color: var(--text); font-size: 12px; padding: 6px 8px; outline: none; width: 100%;
+  transition: border-color 0.15s;
+}
+.pl-num-field input:focus { border-color: var(--border-focus); }
+.pl-totals { align-self: start; position: sticky; top: 96px; }
+.pl-summary-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--border-subtle);
+  font-size: 13px; color: var(--text-secondary);
+}
+.pl-summary-row strong { color: var(--text); font-weight: 600; }
+.pl-summary-accent { border-bottom: none; padding-top: 14px; margin-top: 4px; }
+.pl-summary-accent strong { color: var(--accent); font-size: 16px; font-family: var(--font-display); }
+@media (max-width: 960px) {
+  .pl-layout { grid-template-columns: 1fr; padding: 16px 16px 64px; }
+  .pl-info-grid { grid-template-columns: 1fr; }
+  .pl-totals { position: static; }
+}
+
+/* ─── INCOTERM COMPARE ────────────────── */
+.icc-layout { display: flex; flex-direction: column; gap: 20px; padding: 20px 32px 64px; }
+.icc-groups { display: flex; gap: 8px; flex-wrap: wrap; }
+.icc-group-btn {
+  padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 500;
+  background: var(--surface-input); border: 1px solid var(--border); color: var(--text-secondary);
+  cursor: pointer; transition: all 0.15s;
+}
+.icc-group-btn:hover { border-color: var(--border-hover); color: var(--text); }
+.icc-group-active { background: var(--accent); color: #000; border-color: var(--accent); }
+[data-theme="light"] .icc-group-active { color: #fff; }
+.icc-table-wrap { overflow-x: auto; border-radius: var(--r-md); border: 1px solid var(--border); }
+.icc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.icc-table th {
+  text-align: left; padding: 10px 12px; font-weight: 600; font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--text-muted); background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.icc-table td { padding: 10px 12px; border-bottom: 1px solid var(--border-subtle); }
+.icc-row { cursor: pointer; transition: background 0.1s; }
+.icc-row:hover { background: var(--surface-hover); }
+.icc-row-selected { background: var(--accent-15) !important; }
+.icc-code {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; color: #fff; letter-spacing: 0.05em;
+}
+.icc-name { color: var(--text); font-weight: 500; }
+.icc-badge {
+  display: inline-block; padding: 2px 8px; border-radius: 100px;
+  font-size: 11px; font-weight: 500; white-space: nowrap;
+}
+.icc-badge-seller { background: rgba(16, 185, 129, 0.15); color: #10B981; }
+.icc-badge-buyer { background: rgba(239, 68, 68, 0.15); color: #EF4444; }
+.icc-detail { border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); }
+.icc-detail .calc-card-header { gap: 12px; }
+.icc-code-lg {
+  display: inline-block; padding: 4px 14px; border-radius: 100px;
+  font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.05em;
+}
+.icc-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.icc-detail-item { display: flex; flex-direction: column; gap: 2px; }
+.icc-detail-label { font-size: 11px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+.icc-detail-item strong { font-size: 14px; color: var(--text); }
+@media (max-width: 960px) {
+  .icc-layout { padding: 16px 16px 64px; }
+  .icc-groups { flex-direction: column; }
+  .icc-detail-grid { grid-template-columns: 1fr; }
+}
