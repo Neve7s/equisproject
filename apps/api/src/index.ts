@@ -46,8 +46,10 @@ async function fetchSunat(date: string): Promise<TcData> {
   };
 }
 
-// API routes
-app.get("/api/exchange-rate", async (c) => {
+// API routes — registered on a sub-router so they are never caught by static middleware
+const api = new Hono();
+
+api.get("/exchange-rate", async (c) => {
   const date = c.req.query("date") || todayISO();
   const nowUtc5 = new Date().toLocaleString("sv-SE", { timeZone: "America/Lima" });
   const cached = cache.get(date);
@@ -66,26 +68,13 @@ app.get("/api/exchange-rate", async (c) => {
   }
 });
 
-app.get("/api/health", (c) => c.json({ ok: true }));
+api.get("/health", (c) => c.json({ ok: true }));
 
-// Static files - exclude /api routes
+app.route("/api", api);
+
+// Static files — AFTER API routes
 const distPath = `${process.cwd()}/apps/web/dist`;
-
-app.use("/assets/*", serveStatic({ root: distPath }));
-
-app.get("/*", async (c, next) => {
-  if (c.req.path.startsWith("/api/")) {
-    return next();
-  }
-  return serveStatic({ root: distPath })(c, next);
-});
-
-app.get("/*", async (c, next) => {
-  if (c.req.path.startsWith("/api/")) {
-    return next();
-  }
-  return serveStatic({ root: distPath, path: "index.html" })(c, next);
-});
+app.use("/*", serveStatic({ root: distPath }));
 
 const port = Number(process.env.PORT) || 3001;
 
