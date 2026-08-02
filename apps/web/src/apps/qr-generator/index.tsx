@@ -17,7 +17,7 @@ const barcodeFormats = [
 
 export default function QrGenerator() {
   const [codeType, setCodeType] = useState<CodeType>("qr");
-  const [text, setText] = useState("https://equisproject.onrender.com");
+  const [text, setText] = useState("https://equisproject.online");
   const [barcodeFormat, setBarcodeFormat] = useState("CODE128");
   const [qrDataUrl, setQrDataUrl] = useState("");
   const [barcodeDataUrl, setBarcodeDataUrl] = useState("");
