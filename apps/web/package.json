@@ -9,10 +9,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@equis/shared": "workspace:*",
+    "jspdf": "^4.2.1",
+    "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.0.0",
-    "@equis/shared": "workspace:*"
+    "react-router-dom": "^7.0.0"
   },
   "devDependencies": {
     "typescript": "^5.7.0",

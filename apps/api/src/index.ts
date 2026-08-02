@@ -66,7 +66,7 @@ app.get("/api/exchange-rate", async (c) => {
 
 app.get("/api/health", (c) => c.json({ ok: true }));
 
-const distPath = `${process.cwd()}/apps/web/dist`;
+const distPath = `${import.meta.dir}/../../../web/dist`;
 const MIME: Record<string, string> = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
