@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import {
   DEFAULT_RATES,
   type TaxRates,
@@ -25,6 +25,9 @@ export function ImportCalculator() {
   const [incotermValue, setIncotermValue] = useState("0");
   const [rates, setRates] = useState<TaxRates>({ ...DEFAULT_RATES });
   const [currency, setCurrency] = useState<"USD" | "PEN">("USD");
+  const [showInfo, setShowInfo] = useState(false);
+
+  const toggleInfo = useCallback(() => setShowInfo((v) => !v), []);
 
   const result = useMemo(() => {
     return computeImportTaxes({
@@ -57,10 +60,20 @@ export function ImportCalculator() {
             <h1 className="page-title">Calculadora de Importación</h1>
             <p className="page-subtitle">Perú · SUNAT · CIF + tributos aduaneros</p>
           </div>
-          <div className="tooltip-wrap">
-            <button className="tooltip-trigger" aria-label="¿Cómo funciona?">?</button>
-            <div className="tooltip-content">
-              <p className="tooltip-title">¿Cómo se calcula?</p>
+          <button
+            className={`tooltip-trigger ${showInfo ? "tooltip-trigger-active" : ""}`}
+            onClick={toggleInfo}
+            aria-label="¿Cómo funciona?"
+            aria-expanded={showInfo}
+          >?</button>
+        </div>
+        {showInfo && (
+          <div className="calc-info-panel">
+            <div className="calc-info-content">
+              <div className="calc-info-header">
+                <p className="tooltip-title">¿Cómo se calcula?</p>
+                <button className="btn btn-ghost btn-sm" onClick={toggleInfo}>✕</button>
+              </div>
               <div className="tooltip-text">
                 <p><strong>CIF</strong> = FOB + Flete + Seguro + Cargo Incoterm</p>
                 <p style={{ marginTop: 8 }}>Sobre el CIF se aplican los tributos:</p>
@@ -73,7 +86,7 @@ export function ImportCalculator() {
               </div>
             </div>
           </div>
-        </div>
+        )}
       </header>
 
       <div className="calc-layout">
