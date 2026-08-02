@@ -291,10 +291,11 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 
 /* ─── APPS GRID (horizontal rows) ────────────────── */
 .apps-grid {
-  display: flex; flex-direction: column; gap: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
   width: 100%;
-  padding: 0 24px clamp(48px, 8vw, 80px);
-  max-width: 100%;
+  padding: 0 clamp(16px, 4vw, 32px) clamp(48px, 8vw, 80px);
   box-sizing: border-box;
 }
 .app-row {
@@ -305,6 +306,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   transition: background 0.15s, border-color 0.15s; cursor: pointer;
   width: 100%;
   box-sizing: border-box;
+  min-width: 0;
 }
 .app-row:hover { background: var(--surface-hover); border-color: var(--border-hover); }
 .app-row-icon {
@@ -312,15 +314,28 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   border-radius: var(--r-md); background: var(--surface-input);
 }
 .app-row-info { flex: 1; min-width: 0; }
-.app-row-name { font-family: var(--font-display); font-size: clamp(14px, 2vw, 16px); font-weight: 400; color: var(--text); margin-bottom: 2px; }
-.app-row-desc { font-size: clamp(11px, 1.8vw, 13px); color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-row-name {
+  font-family: var(--font-display); font-size: clamp(13px, 2vw, 16px);
+  font-weight: 400; color: var(--text); margin-bottom: 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.app-row-desc {
+  font-size: clamp(11px, 1.6vw, 13px); color: var(--text-secondary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .app-row-arrow { color: var(--text-muted); font-size: 16px; flex-shrink: 0; transition: color 0.15s; }
 .app-row:hover .app-row-arrow { color: var(--accent); }
-@media (max-width: 768px) {
-  .apps-grid { padding: 0 16px 64px; }
-  .app-row { padding: 12px 14px; gap: 12px; }
-  .app-row-name { font-size: 14px; }
-  .app-row-desc { font-size: 11px; }
+@media (min-width: 520px) {
+  .apps-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px) {
+  .apps-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .app-row { padding: 12px 14px; gap: 10px; }
+  .app-row-icon { width: 28px; height: 28px; }
+  .app-row-icon svg { width: 16px; height: 16px; }
+  .app-row-desc { display: none; }
 }
 
 /* ─── PAGE ───────────────────────────────────────── */
