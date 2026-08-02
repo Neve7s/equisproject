@@ -29,8 +29,8 @@ export function Home() {
       <section className="apps-grid">
         {miniApps.map((app) => (
           <Link key={app.id} to={app.path} className="app-row">
-            <div className="app-row-icon" style={{ color: app.accent }}>
-              <AppIcon name={app.icon} width={22} height={22} />
+            <div className="app-row-icon">
+              <AppIcon name={app.icon} color={app.accent} width={20} height={20} />
             </div>
             <div className="app-row-info">
               <h2 className="app-row-name">{app.name}</h2>
