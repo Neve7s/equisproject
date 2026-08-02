@@ -11,5 +11,8 @@
     "test": "bun run --filter shared test",
     "typecheck": "bun run --filter shared typecheck && bun run --filter web typecheck",
     "production": "bun run build && bun run start"
+  },
+  "dependencies": {
+    "jsbarcode": "^3.12.3"
   }
 }

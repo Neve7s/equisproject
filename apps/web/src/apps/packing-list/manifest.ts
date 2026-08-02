@@ -6,7 +6,7 @@ export const packingListManifest: MiniAppManifest = {
   name: "Packing List",
   tagline: "Lista de empaque PDF",
   description: "Genera una lista de empaque profesional en PDF para exportación e importación.",
-  icon: "📦",
+  icon: "package",
   accent: "#F59E0B",
   path: "/apps/packing-list",
   Component: PackingList,

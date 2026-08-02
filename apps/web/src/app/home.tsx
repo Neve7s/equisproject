@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { miniApps } from "../registry";
+import { AppIcon } from "../registry/app-icon";
 import { HeroScene } from "./HeroScene";
 
 export function Home() {
@@ -28,7 +29,9 @@ export function Home() {
       <section className="apps-grid">
         {miniApps.map((app) => (
           <Link key={app.id} to={app.path} className="app-row">
-            <div className="app-row-icon">{app.icon}</div>
+            <div className="app-row-icon" style={{ color: app.accent }}>
+              <AppIcon name={app.icon} width={22} height={22} />
+            </div>
             <div className="app-row-info">
               <h2 className="app-row-name">{app.name}</h2>
               <p className="app-row-desc">{app.description}</p>
