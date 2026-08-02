@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g1" cx="80%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#43FEA4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#43FEA4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="20%" cy="80%" r="35%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#000"/>
+  <circle cx="960" cy="126" r="250" fill="url(#g1)"/>
+  <circle cx="240" cy="504" r="200" fill="url(#g2)"/>
+  <!-- Brand -->
+  <rect x="504" y="140" width="56" height="56" rx="14" fill="#43FEA4"/>
+  <text x="532" y="180" font-size="32" font-weight="700" text-anchor="middle" fill="#000" font-family="system-ui, sans-serif">X</text>
+  <text x="572" y="178" font-size="28" font-weight="600" fill="#fff" font-family="system-ui, sans-serif">equisproject</text>
+  <!-- Title -->
+  <text x="600" y="260" font-size="48" font-weight="700" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif">Aplicaciones</text>
+  <text x="600" y="320" font-size="48" font-weight="700" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif">logísticas para <tspan fill="#43FEA4">importación</tspan></text>
+  <!-- Subtitle -->
+  <text x="600" y="380" font-size="20" text-anchor="middle" fill="#A1A4A5" font-family="system-ui, sans-serif">Herramientas gratuitas para operaciones de importación en Perú</text>
+  <!-- App tags -->
+  <g transform="translate(310, 420)">
+    <rect x="0" y="0" width="110" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="55" y="23" font-size="13" font-weight="500" text-anchor="middle" fill="#A1A4A5" font-family="system-ui, sans-serif">Calculadora</text>
+    <rect x="122" y="0" width="100" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="172" y="23" font-size="13" font-weight="500" text-anchor="middle" fill="#A1A4A5" font-family="system-ui, sans-serif">QR / Barcode</text>
+    <rect x="234" y="0" width="100" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="284" y="23" font-size="13" font-weight="500" text-anchor="middle" fill="#A1A4A5" font-family="system-ui, sans-serif">Conversor</text>
+    <rect x="346" y="0" width="110" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="401" y="23" font-size="13" font-weight="500" text-anchor="middle" fill="#A1A4A5" font-family="system-ui, sans-serif">Packing List</text>
+    <rect x="468" y="0" width="100" height="36" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="518" y="23" font-size="13" font-weight="500" text-anchor="middle" fill="#A1A4A5" font-family="system-ui, sans-serif">Incoterms</text>
+  </g>
+</svg>

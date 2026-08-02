@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; background: #000; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, sans-serif; }
+  .card {
+    width: 1200px; height: 630px; background: #000;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; top: -200px; right: -200px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(67,254,164,0.15) 0%, transparent 70%);
+  }
+  .card::after {
+    content: ""; position: absolute; bottom: -150px; left: -150px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+  }
+  .brand { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; position: relative; z-index: 1; }
+  .brand-mark {
+    width: 64px; height: 64px; border-radius: 16px; background: #43FEA4;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; font-weight: 700; color: #000;
+  }
+  .brand-text { font-size: 32px; font-weight: 600; color: #fff; }
+  .title {
+    font-size: 52px; font-weight: 700; color: #fff; text-align: center;
+    max-width: 900px; line-height: 1.2; margin-bottom: 20px; position: relative; z-index: 1;
+  }
+  .title span { color: #43FEA4; }
+  .subtitle {
+    font-size: 22px; color: #A1A4A5; text-align: center;
+    max-width: 700px; position: relative; z-index: 1;
+  }
+  .apps {
+    display: flex; gap: 12px; margin-top: 32px; position: relative; z-index: 1;
+  }
+  .app-tag {
+    padding: 8px 16px; border-radius: 100px; font-size: 14px; font-weight: 500;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    color: #A1A4A5;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">
+      <div class="brand-mark">X</div>
+      <div class="brand-text">equisproject</div>
+    </div>
+    <div class="title">Aplicaciones <span>logísticas</span> para importación</div>
+    <div class="subtitle">Herramientas gratuitas para operaciones de importación en Perú</div>
+    <div class="apps">
+      <span class="app-tag">Calculadora</span>
+      <span class="app-tag">QR / Barcode</span>
+      <span class="app-tag">Conversor</span>
+      <span class="app-tag">Packing List</span>
+      <span class="app-tag">Incoterms</span>
+    </div>
+  </div>
+</body>
+</html>
