@@ -28,27 +28,55 @@ function setCachedTc(date: string, data: TcData): void {
   } catch { /* */ }
 }
 
-export async function fetchSunatTc(): Promise<TcData> {
-  const baseUrl = (import.meta.env.VITE_EXCHANGE_RATE_API_URL as string | undefined)
-    ?? "http://localhost:3001/api/exchange-rate";
-  const res = await fetch(baseUrl);
+async function fetchDirectSunat(date: string): Promise<TcData> {
+  const res = await fetch(
+    `https://api.apis.net.pe/v1/tipo-cambio-sunat?fecha=${date}`
+  );
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const json = await res.json() as Record<string, unknown>;
+  const json = (await res.json()) as Record<string, unknown>;
+  return {
+    compra: Number(json.compra) || 0,
+    venta: Number(json.venta) || 0,
+    fecha: String(json.fecha ?? date),
+    source: String(json.origen ?? "SUNAT"),
+  };
+}
+
+async function fetchViaProxy(date: string): Promise<TcData> {
+  const baseUrl =
+    (import.meta.env.VITE_EXCHANGE_RATE_API_URL as string | undefined) ??
+    "/api/exchange-rate";
+  const url = `${baseUrl}?date=${date}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const json = (await res.json()) as Record<string, unknown>;
   if (json.error) throw new Error(String(json.error));
   return {
     compra: Number(json.compra) || 0,
     venta: Number(json.venta) || 0,
-    fecha: String(json.fecha ?? todayISO()),
+    fecha: String(json.fecha ?? date),
     source: String(json.source ?? "SUNAT"),
     utc5: json.utc5 ? String(json.utc5) : undefined,
   };
+}
+
+export async function fetchSunatTc(): Promise<TcData> {
+  const date = todayISO();
+  try {
+    return await fetchDirectSunat(date);
+  } catch {
+    return await fetchViaProxy(date);
+  }
 }
 
 export function highestTc(data: TcData): number {
   return Math.max(data.compra, data.venta);
 }
 
-export async function loadExchangeRate(): Promise<{ data: TcData; tc: number } | null> {
+export async function loadExchangeRate(): Promise<{
+  data: TcData;
+  tc: number;
+} | null> {
   const today = todayISO();
   const todayCached = getCachedTc(today);
   if (todayCached) {
@@ -59,9 +87,17 @@ export async function loadExchangeRate(): Promise<{ data: TcData; tc: number } |
     setCachedTc(today, fresh);
     return { data: fresh, tc: highestTc(fresh) };
   } catch {
-    const keys = Object.keys(localStorage).filter((k) => k.startsWith(CACHE_PREFIX));
+    const keys = Object.keys(localStorage).filter((k) =>
+      k.startsWith(CACHE_PREFIX)
+    );
     const allCached = keys
-      .map((k) => { try { return JSON.parse(localStorage.getItem(k)!) as TcData; } catch { return null; } })
+      .map((k) => {
+        try {
+          return JSON.parse(localStorage.getItem(k)!) as TcData;
+        } catch {
+          return null;
+        }
+      })
       .filter((d): d is TcData => d !== null)
       .sort((a, b) => b.fecha.localeCompare(a.fecha));
     if (allCached.length > 0) {
