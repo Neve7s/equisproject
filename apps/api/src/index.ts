@@ -67,7 +67,7 @@ app.get("/api/exchange-rate", async (c) => {
 
 app.get("/api/health", (c) => c.json({ ok: true }));
 
-const distPath = import.meta.dir + "/../../web/dist";
+const distPath = `${process.cwd()}/apps/web/dist`;
 
 app.use("/*", serveStatic({ root: distPath }));
 app.get("/*", serveStatic({ root: distPath, path: "index.html" }));
