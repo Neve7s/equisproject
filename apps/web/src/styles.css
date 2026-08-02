@@ -345,7 +345,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .page-subtitle { font-size: 14px; color: var(--text-secondary); }
 @media (max-width: 768px) {
   .page-header { padding: 24px 16px 0; padding-top: 72px; }
-  .page-header-row { flex-direction: column; gap: 12px; }
+  .page-header-row { flex-wrap: wrap; }
 }
 
 /* ─── CALCULATOR ─────────────────────────────────── */
@@ -575,6 +575,14 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .tooltip-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
 .tooltip-text { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
 .tooltip-text strong { color: var(--accent); }
+@media (max-width: 600px) {
+  .tooltip-content {
+    right: auto; left: 50%; transform: translateX(-50%) translateY(-4px);
+    min-width: 220px; max-width: calc(100vw - 48px); width: max-content;
+  }
+  .tooltip-wrap:hover .tooltip-content,
+  .tooltip-wrap:focus-within .tooltip-content { transform: translateX(-50%) translateY(0); }
+}
 
 /* ─── INCOTERMS ──────────────────────────────────── */
 .incoterms-grid { display: grid; gap: 6px; margin-top: 6px; }
