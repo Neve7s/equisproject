@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { miniApps } from "../registry";
+import { AppIcon } from "../registry/app-icon";
 import { useTheme } from "../lib/useTheme";
 
 export function Sidebar() {
@@ -69,7 +70,7 @@ export function Sidebar() {
               className={({ isActive }) => `sidebar-link ${isActive ? "sidebar-link-active" : ""}`}
               onClick={close}
             >
-              <span className="sidebar-link-icon">{app.icon}</span>
+              <AppIcon name={app.icon} color="currentColor" width={18} height={18} />
               {app.name}
             </NavLink>
           ))}
