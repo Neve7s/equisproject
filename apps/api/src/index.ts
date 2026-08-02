@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
-import { serveStatic } from "hono/bun";
 
 const app = new Hono();
 app.use("*", cors());
@@ -46,10 +45,7 @@ async function fetchSunat(date: string): Promise<TcData> {
   };
 }
 
-// API routes — registered on a sub-router so they are never caught by static middleware
-const api = new Hono();
-
-api.get("/exchange-rate", async (c) => {
+app.get("/api/exchange-rate", async (c) => {
   const date = c.req.query("date") || todayISO();
   const nowUtc5 = new Date().toLocaleString("sv-SE", { timeZone: "America/Lima" });
   const cached = cache.get(date);
@@ -68,19 +64,52 @@ api.get("/exchange-rate", async (c) => {
   }
 });
 
-api.get("/health", (c) => c.json({ ok: true }));
+app.get("/api/health", (c) => c.json({ ok: true }));
 
-app.route("/api", api);
-
-// Static files — AFTER API routes
 const distPath = `${process.cwd()}/apps/web/dist`;
-app.use("/*", serveStatic({ root: distPath }));
+const MIME: Record<string, string> = {
+  ".html": "text/html; charset=utf-8",
+  ".css": "text/css; charset=utf-8",
+  ".js": "application/javascript; charset=utf-8",
+  ".json": "application/json; charset=utf-8",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".svg": "image/svg+xml",
+  ".ico": "image/x-icon",
+  ".woff2": "font/woff2",
+  ".woff": "font/woff",
+};
+
+function extOf(path: string): string {
+  const i = path.lastIndexOf(".");
+  return i >= 0 ? path.slice(i) : "";
+}
 
 const port = Number(process.env.PORT) || 3001;
 
 Bun.serve({
   port,
-  fetch: app.fetch,
+  async fetch(req) {
+    const url = new URL(req.url);
+
+    const honoRes = await app.fetch(req);
+    if (url.pathname.startsWith("/api/")) {
+      return honoRes;
+    }
+
+    let filePath = distPath + url.pathname;
+    let file = Bun.file(filePath);
+    if (await file.exists()) {
+      return new Response(file, {
+        headers: { "Content-Type": MIME[extOf(filePath)] ?? "application/octet-stream" },
+      });
+    }
+
+    file = Bun.file(distPath + "/index.html");
+    return new Response(file, {
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+  },
 });
 
 console.log(`Server running on port ${port}`);
