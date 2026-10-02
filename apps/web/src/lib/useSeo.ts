@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const titles: Record<string, string> = {
   "/": "equisproject — Aplicaciones logísticas para importación en Perú",
-  "/apps/import-calculator": "Calculadora de Importación — CIF, IGV, IPM | equisproject",
+  "/apps/import-calculator": "Calculadora de Impuestos de Importación — CIF, IGV, IPM | equisproject",
   "/apps/qr-generator": "Generador QR y Código de Barra | equisproject",
   "/apps/unit-converter": "Conversor de Unidades — Peso, Volumen | equisproject",
   "/apps/packing-list": "Packing List — Generador de PDF | equisproject",

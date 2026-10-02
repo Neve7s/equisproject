@@ -3,7 +3,7 @@ import { ImportCalculator } from "./index";
 
 export const importCalculatorManifest: MiniAppManifest = {
   id: "import-calculator",
-  name: "Calculadora de Importación",
+  name: "Calculadora de Impuestos de Importación",
   tagline: "CIF + Impuestos",
   description: "Calcula impuestos y costos totales de importación en Perú.",
   icon: "calculator",
