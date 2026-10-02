@@ -57,7 +57,7 @@ export function ImportCalculator() {
       <header className="page-header">
         <div className="page-header-row">
           <div>
-            <h1 className="page-title">Calculadora de Importación</h1>
+            <h1 className="page-title">Calculadora de Impuestos de Importación</h1>
             <p className="page-subtitle">Perú · SUNAT · CIF + tributos aduaneros</p>
           </div>
           <button
