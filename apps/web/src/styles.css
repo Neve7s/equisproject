@@ -128,13 +128,13 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .app-main { flex: 1; }
 
 /* ─── THEME TOGGLE (sidebar) ──────────────────────── */
+/* Comparte estilo con .sidebar-link: fila con icono y texto, sin borde. */
 .theme-toggle {
-  width: 32px; height: 32px; border-radius: var(--r-sm);
-  background: transparent; border: 1px solid var(--border);
-  display: grid; place-items: center; color: var(--text-secondary);
-  transition: all 0.15s; cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
 }
-.theme-toggle:hover { background: var(--surface-hover); color: var(--text); border-color: var(--border-hover); }
+.theme-toggle:hover { background: var(--link-hover); color: var(--text); }
 
 /* ─── SIDEBAR ────────────────────────────────────── */
 .sidebar {
@@ -1093,3 +1093,8 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 @media (max-width: 420px) {
   .results-copy { font-size: 11px; padding: 4px 6px; }
 }
+
+/* ─── FOOTER DEL SIDEBAR ──────────────────────────── */
+.sidebar-footer-links { display: flex; flex-direction: column; align-items: stretch; gap: 2px; }
+.sidebar-footer .sidebar-link { min-height: 36px; white-space: nowrap; }
+.sidebar-footer .theme-toggle { margin: 0; width: 100%; justify-content: flex-start; }

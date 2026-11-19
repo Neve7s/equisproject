@@ -103,10 +103,10 @@ export function Sidebar() {
               GitHub
             </a>
             <button
-              className="theme-toggle"
+              className="sidebar-link theme-toggle"
               onClick={toggle}
               aria-label={theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro"}
-              title={theme === "dark" ? "Tema claro" : "Tema oscuro"}
+              title={theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro"}
             >
               {theme === "dark" ? (
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -125,6 +125,7 @@ export function Sidebar() {
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>
               )}
+              Tema
             </button>
           </div>
         </div>
