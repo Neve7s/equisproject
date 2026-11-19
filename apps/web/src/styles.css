@@ -5,6 +5,7 @@
   --bg: #080B11;
   --surface: #111823;
   --surface-hover: #182131;
+  --surface-glass: rgba(17, 24, 35, 0.74);
   --surface-input: rgba(148, 163, 184, 0.06);
   --surface-input-focus: rgba(148, 163, 184, 0.1);
   --border: rgba(148, 163, 184, 0.16);
@@ -19,14 +20,14 @@
   --text-secondary: #9DAEC2;
   --text-muted: #63748A;
 
-  /* Marca: verde esmeralda con un azul frío de apoyo */
+  /* Marca: verde esmeralda con un verde azulado de apoyo */
   --accent: #34D399;
   --accent-bright: #6EE7B7;
   --accent-dim: #10B981;
   --accent-15: rgba(52, 211, 153, 0.15);
   --accent-08: rgba(52, 211, 153, 0.08);
   --accent-glow: rgba(52, 211, 153, 0.28);
-  --secondary: #60A5FA;
+  --secondary: #2DD4BF;
 
   --danger: #F87171;
   --danger-08: rgba(248, 113, 113, 0.08);
@@ -54,6 +55,7 @@
   --bg: #F5F7FA;
   --surface: #FFFFFF;
   --surface-hover: #EEF2F7;
+  --surface-glass: rgba(255, 255, 255, 0.76);
   --surface-input: rgba(15, 23, 42, 0.04);
   --surface-input-focus: rgba(15, 23, 42, 0.07);
   --border: rgba(15, 23, 42, 0.1);
@@ -74,7 +76,7 @@
   --accent-15: rgba(5, 150, 105, 0.13);
   --accent-08: rgba(5, 150, 105, 0.07);
   --accent-glow: rgba(5, 150, 105, 0.18);
-  --secondary: #2563EB;
+  --secondary: #0D9488;
 
   --danger: #DC2626;
   --danger-08: rgba(220, 38, 38, 0.07);
@@ -95,8 +97,8 @@ body {
   line-height: 1.5;
   color: var(--text);
   background:
-    radial-gradient(1100px 560px at 18% -8%, var(--accent-08), transparent 62%),
-    radial-gradient(900px 520px at 100% 0%, color-mix(in srgb, var(--secondary) 7%, transparent), transparent 60%),
+    radial-gradient(900px 480px at 14% -10%, var(--accent-08), transparent 65%),
+    radial-gradient(760px 460px at 96% -6%, var(--accent-08), transparent 65%),
     var(--bg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -1096,3 +1098,56 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .sidebar-footer-links { display: flex; flex-direction: column; align-items: stretch; gap: 2px; }
 .sidebar-footer .sidebar-link { min-height: 36px; white-space: nowrap; }
 .sidebar-footer .theme-toggle { margin: 0; width: 100%; justify-content: flex-start; }
+
+/* ─── GLASS (con fallback sólido y respeto a transparencia reducida) ─── */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sidebar, .card {
+    background: var(--surface-glass);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+  }
+  @media (max-width: 768px) {
+    .sidebar, .card {
+      -webkit-backdrop-filter: blur(8px) saturate(140%);
+      backdrop-filter: blur(8px) saturate(140%);
+    }
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sidebar, .card { background: var(--surface); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .sidebar, .card {
+    background: var(--surface);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* ─── COMPACTO: misma altura en todos los elementos, sin scroll ─── */
+@media (min-width: 769px) {
+  .page-header { padding-top: 18px; }
+  .page-title { font-size: clamp(22px, 2.4vw, 28px); }
+  .page-subtitle { font-size: 12px; }
+}
+.calc-layout.calc-layout-stacked { padding-top: 12px; padding-bottom: 28px; gap: 12px; }
+.calc-card-header { padding: 10px 16px; }
+.calc-panel { padding: 12px 16px 14px; }
+.calc-panel-head { min-height: 20px; margin-bottom: 10px; }
+.calc-panel .calc-fields { gap: 8px; }
+.calc-panel .rate-chip { padding: 6px 0; }
+.calc-field-input { padding: 0 10px; }
+.calc-field-value { padding: 8px 0; }
+.calc-incoterm-row { gap: 8px; }
+.calc-results-head { padding: 10px 16px; }
+.results { padding: 10px 16px; }
+.results .results-cif { padding: 8px 10px; }
+.results .results-lines {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 6px; padding: 8px 0;
+}
+.results .results-line { padding: 8px 10px; gap: 5px; font-size: 12px; }
+.results .results-subtotal { padding: 8px 10px; }
+.results .results-total { padding: 9px 12px 8px; margin-top: 8px; }
+.results .results-total-main { font-size: 18px; }
+.results-footer { padding-top: 6px; }
