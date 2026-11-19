@@ -1010,8 +1010,6 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 /* ─── CALCULADORA REDISEÑADA ─────────────────────── */
 .calc-layout.calc-layout-stacked {
   grid-template-columns: minmax(0, 1fr);
-  max-width: 1180px;
-  margin: 0 auto;
   gap: 16px;
 }
 .calc-layout-stacked .calc-results { position: static; }
