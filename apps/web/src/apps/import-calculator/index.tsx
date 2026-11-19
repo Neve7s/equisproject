@@ -5,8 +5,6 @@ import {
   type TaxRateKey,
   computeImportTaxes,
   parseAmount,
-  formatMoney,
-  formatRate,
 } from "@equis/shared";
 import { INCOTERMS } from "@equis/shared";
 import { useExchangeRate } from "../../lib/useExchangeRate";
@@ -89,33 +87,36 @@ export function ImportCalculator() {
         )}
       </header>
 
-      <div className="calc-layout">
-        <div className="calc-form">
-          {tc.error && !tc.isManual && (
-            <div className="error-banner">{tc.error}</div>
-          )}
+      <div className="calc-layout calc-layout-stacked">
+        {tc.error && !tc.isManual && (
+          <div className="error-banner">{tc.error}</div>
+        )}
 
-          <div className="card calc-card">
-            <div className="calc-card-header">
-              <div className="calc-card-row">
-                <span className="calc-card-label">Moneda</span>
-                <div className="currency-toggle">
-                  <button
-                    className={`currency-pill ${currency === "USD" ? "currency-pill-active" : ""}`}
-                    onClick={() => setCurrency("USD")}
-                  >USD</button>
-                  <button
-                    className={`currency-pill ${currency === "PEN" ? "currency-pill-active" : ""}`}
-                    onClick={() => setCurrency("PEN")}
-                  >PEN</button>
-                </div>
-                <div style={{ flex: 1 }} />
-                <TcBadge tc={tc} />
+        <div className="card calc-card calc-workbench">
+          <div className="calc-card-header">
+            <div className="calc-card-row">
+              <span className="calc-card-label">Moneda</span>
+              <div className="currency-toggle">
+                <button
+                  className={`currency-pill ${currency === "USD" ? "currency-pill-active" : ""}`}
+                  onClick={() => setCurrency("USD")}
+                >USD</button>
+                <button
+                  className={`currency-pill ${currency === "PEN" ? "currency-pill-active" : ""}`}
+                  onClick={() => setCurrency("PEN")}
+                >PEN</button>
               </div>
+              <div style={{ flex: 1 }} />
+              <TcBadge tc={tc} />
             </div>
+          </div>
 
-            <div className="calc-card-body">
-              <p className="section-label">Datos del envío</p>
+          <div className="calc-workbench-grid">
+            <section className="calc-panel" aria-labelledby="calc-shipment-title">
+              <div className="calc-panel-head">
+                <p className="section-label" id="calc-shipment-title">Datos del envío</p>
+                <span className="calc-panel-hint">en {currency}</span>
+              </div>
               <div className="calc-fields">
                 <MoneyInput label="FOB" currency={currency} value={fob} onChange={setFob} />
                 <MoneyInput label="Flete" currency={currency} value={flete} onChange={setFlete} />
@@ -127,11 +128,11 @@ export function ImportCalculator() {
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className="calc-card-body" style={{ borderTop: "1px solid var(--border)" }}>
-              <div className="calc-rates-header">
-                <p className="section-label" style={{ margin: 0 }}>Tributos</p>
+            <section className="calc-panel calc-panel-tax" aria-labelledby="calc-tax-title">
+              <div className="calc-panel-head">
+                <p className="section-label" id="calc-tax-title">Tributos</p>
                 <button className="btn btn-ghost btn-sm" onClick={resetRates}>Restablecer</button>
               </div>
               <div className="calc-rates-grid">
@@ -146,18 +147,13 @@ export function ImportCalculator() {
                   />
                 ))}
               </div>
-            </div>
+            </section>
           </div>
         </div>
 
-        <div className="calc-results">
-          <div className="card calc-card" style={{ position: "sticky", top: 24 }}>
-            <div className="calc-card-body">
-              <p className="section-label">Resultado</p>
-            </div>
-            <ResultsTable result={result} tc={tc.tc} />
-          </div>
-        </div>
+        <section className="calc-results" aria-label="Resultado del cálculo">
+          <ResultsTable result={result} tc={tc.tc} />
+        </section>
       </div>
     </>
   );
