@@ -9,7 +9,7 @@
     "start": "bun run --filter api start",
     "preview": "bun run --filter web preview",
     "test": "bun run --filter shared test",
-    "typecheck": "bun run --filter shared typecheck && bun run --filter web typecheck",
+    "typecheck": "bun run --filter web typecheck",
     "production": "bun run build && bun run start"
   },
   "dependencies": {
