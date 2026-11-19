@@ -50,6 +50,30 @@ const icons: Record<string, (color: string) => (props: SVGProps<SVGSVGElement>) 
       <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
     </svg>
   ),
+  customs: (color) => (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M5 2h9l5 5v15H5z" />
+      <path d="M14 2v5h5" />
+      <path d="M8.5 11h7M8.5 14h5" />
+      <circle cx="16" cy="17" r="3.5" />
+      <path d="M14.3 17l1.2 1.2 2.2-2.4" />
+    </svg>
+  ),
+  freight: (color) => (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="1" y="6" width="13" height="10" rx="1.5" />
+      <path d="M14 10h4l4 4v2h-8z" />
+      <circle cx="6" cy="18" r="2" />
+      <circle cx="18" cy="18" r="2" />
+      <path d="M8 18h8M4 9h7" />
+    </svg>
+  ),
+  container: (color) => (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="2" y="6" width="20" height="12" rx="1.5" />
+      <path d="M2 10h20M2 14h20M9 6v12M16 6v12" />
+    </svg>
+  ),
 };
 
 export function AppIcon({ name, color = "currentColor", ...props }: IconProps) {

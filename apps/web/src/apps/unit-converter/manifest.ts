@@ -6,8 +6,8 @@ export const unitConverterManifest: MiniAppManifest = {
   name: "Conversor de Unidades",
   tagline: "Peso, volumen, longitud",
   description: "Convierte entre unidades de peso, volumen, longitud y temperatura para operaciones de envío.",
-  icon: "converter",
-  accent: "#2DD4BF",
+  icon: "freight",
+  accent: "#10B981",
   path: "/apps/unit-converter",
   Component: UnitConverter,
 };

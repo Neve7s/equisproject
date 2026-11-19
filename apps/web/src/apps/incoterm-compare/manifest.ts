@@ -7,7 +7,7 @@ export const incotermCompareManifest: MiniAppManifest = {
   tagline: "11 Incoterms® 2020",
   description: "Compara riesgos, costos y responsabilidades entre todos los Incoterms® 2020.",
   icon: "globe",
-  accent: "#8B5CF6",
+  accent: "#34D399",
   path: "/apps/incoterm-compare",
   Component: IncotermCompare,
 };
