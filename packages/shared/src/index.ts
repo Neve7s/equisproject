@@ -8,5 +8,7 @@ export {
   normalizeToUsd,
 } from "./taxes";
 export type { TaxRates, TaxRateKey, TaxInput, TaxLine, TaxResult, TaxError } from "./taxes";
+export { computeLiquidation, isLiquidationError } from "./liquidacion";
+export type { LiquidationInput, LiquidationLine, LiquidationResult } from "./liquidacion";
 export { INCOTERMS, getIncoterm } from "./incoterms";
 export type { Incoterm } from "./incoterms";
