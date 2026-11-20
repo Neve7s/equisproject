@@ -24,6 +24,7 @@ Aplicaciones web **gratuitas** para operaciones de importación y logística en 
 | Conversor de Unidades | Peso, volumen, longitud y temperatura para operaciones de envío |
 | Packing List | Genera una lista de empaque profesional en PDF |
 | Comparador Incoterms | Compara riesgos, costos y responsabilidades de los 11 Incoterms® 2020 |
+| Liquidación Aduanera y DUA | Liquidación CIF + tributos + percepción + detracción, con PDF imprimible y borrador de DUA |
 
 ## Stack
 
@@ -101,16 +102,11 @@ Decisiones clave:
 4. Registrarla en `apps/web/src/registry/index.ts`
 5. Agregar la ruta en `apps/web/src/App.tsx`
 
-## Sugerencia: próxima herramienta de alto impacto
+## Generador de Liquidación Aduanera y DUA
 
-La herramienta más poderosa que encaja con el producto es un **Generador de Liquidación Aduanera y DUA asistido**:
+**Implementada** en `apps/web/src/apps/liquidation-generator/`. Reutiliza el CIF y los tributos de la calculadora, añade detracción configurable (default 0%, según la operación) y exporta un PDF con la liquidación y un **borrador de DUA** con marca de agua "no válido para SUNAT". No consume APIs nuevas: usa el mismo tipo de cambio de `/api/exchange-rate`. Especificación en `docs/spec-liquidacion-dua.md`.
 
-- Reutiliza el CIF y los impuestos que ya calcula la app actual.
-- Agrega detracciones, percepción y un desglose por partida.
-- Exporta un **PDF imprimible** con la liquidación y un **borrador de DUA** prellenado.
-- Impacto: convierte equisproject de "calculadoras" en un **generador de documentos**, que es donde está el valor real para el usuario.
-
-Alternativas ordenadas por impacto/esfuerzo: (2) calculadora de **detracciones SUNAT**, (3) **histórico y alertas de tipo de cambio** con gráficas, (4) **cotizador de fletes** comparando Incoterms.
+Alternativas pendientes ordenadas por impacto/esfuerzo: (1) **histórico y alertas de tipo de cambio** con gráficas, (2) **cotizador de fletes** comparando Incoterms.
 
 ## Contacto y sugerencias
 
