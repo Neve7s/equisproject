@@ -1154,3 +1154,30 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .results .results-total { padding: 9px 12px 8px; margin-top: 8px; }
 .results .results-total-main { font-size: 18px; }
 .results-footer { padding-top: 6px; }
+
+/* ─── LIQUIDACIÓN + DUA ───────────────────────────── */
+.liq-warning { border-left: 3px solid var(--warning); line-height: 1.5; }
+.liq-warning strong { color: var(--warning); }
+.liq-rate-chips {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
+  padding-top: 12px; border-top: 1px solid var(--border-subtle);
+}
+.liq-rate-chips .mono {
+  font-size: 11px; color: var(--text-muted);
+  padding: 3px 8px; border: 1px solid var(--border-subtle); border-radius: 100px;
+}
+.liq-fields-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.liq-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.liq-field span { font-size: 11px; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+.liq-field input {
+  width: 100%; background: var(--surface-input); border: 1px solid var(--border);
+  border-radius: var(--r-md); color: var(--text); font-size: 13px;
+  padding: 9px 11px; outline: none; transition: border-color 0.15s;
+}
+.liq-field input:focus { border-color: var(--border-focus); }
+.liq-field-wide { grid-column: 1 / -1; }
+.liq-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 620px) {
+  .liq-fields-grid { grid-template-columns: minmax(0, 1fr); }
+  .liq-actions { justify-content: flex-start; }
+}

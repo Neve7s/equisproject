@@ -6,6 +6,7 @@ import QrGenerator from "./apps/qr-generator";
 import UnitConverter from "./apps/unit-converter";
 import PackingList from "./apps/packing-list";
 import IncotermCompare from "./apps/incoterm-compare";
+import LiquidationGenerator from "./apps/liquidation-generator";
 import { NotFound } from "./app/not-found";
 
 export function App() {
@@ -18,6 +19,7 @@ export function App() {
         <Route path="apps/unit-converter" element={<UnitConverter />} />
         <Route path="apps/packing-list" element={<PackingList />} />
         <Route path="apps/incoterm-compare" element={<IncotermCompare />} />
+        <Route path="apps/liquidacion-dua" element={<LiquidationGenerator />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

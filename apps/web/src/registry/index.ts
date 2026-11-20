@@ -4,6 +4,7 @@ import { qrGeneratorManifest } from "../apps/qr-generator/manifest";
 import { unitConverterManifest } from "../apps/unit-converter/manifest";
 import { packingListManifest } from "../apps/packing-list/manifest";
 import { incotermCompareManifest } from "../apps/incoterm-compare/manifest";
+import { liquidationManifest } from "../apps/liquidation-generator/manifest";
 
 export const miniApps: MiniAppManifest[] = [
   importCalculatorManifest,
@@ -11,4 +12,5 @@ export const miniApps: MiniAppManifest[] = [
   unitConverterManifest,
   packingListManifest,
   incotermCompareManifest,
+  liquidationManifest,
 ];

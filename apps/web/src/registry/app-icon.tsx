@@ -74,6 +74,13 @@ const icons: Record<string, (color: string) => (props: SVGProps<SVGSVGElement>) 
       <path d="M2 10h20M2 14h20M9 6v12M16 6v12" />
     </svg>
   ),
+  receipt: (color) => (props) => (
+    <svg viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M5 2h14v20l-3-2-4 2-4-2-3 2z" />
+      <path d="M9 7h6M9 11h6M9 15h3" />
+      <circle cx="16.5" cy="15.5" r="2.5" />
+    </svg>
+  ),
 };
 
 export function AppIcon({ name, color = "currentColor", ...props }: IconProps) {
