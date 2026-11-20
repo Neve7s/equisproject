@@ -8,13 +8,29 @@
       <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.1"/>
       <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="ogSteel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C4FFE6"/>
+      <stop offset="0.36" stop-color="#43FEA4"/>
+      <stop offset="0.72" stop-color="#129B69"/>
+      <stop offset="1" stop-color="#043526"/>
+    </linearGradient>
+    <linearGradient id="ogPlate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141C25"/>
+      <stop offset="1" stop-color="#05070B"/>
+    </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="#000"/>
   <circle cx="960" cy="126" r="250" fill="url(#g1)"/>
   <circle cx="240" cy="504" r="200" fill="url(#g2)"/>
   <!-- Brand -->
-  <rect x="504" y="140" width="56" height="56" rx="14" fill="#43FEA4"/>
-  <text x="532" y="180" font-size="32" font-weight="700" text-anchor="middle" fill="#000" font-family="system-ui, sans-serif">X</text>
+  <g transform="translate(504 140) scale(0.875)">
+    <path d="M7 2 H57 L62 7 V57 L57 62 H7 L2 57 V7 Z" fill="url(#ogPlate)" stroke="#43FEA4" stroke-width="2"/>
+    <path d="M10 8 L20 4 L54 44 L47 55 Z" fill="url(#ogSteel)"/>
+    <path d="M54 8 L44 4 L10 44 L17 55 Z" fill="url(#ogSteel)"/>
+    <path d="M27 27 L32 22 L37 27 L32 32 Z" fill="#05070B"/>
+    <path d="M32 32 L37 37 L32 42 L27 37 Z" fill="#05070B"/>
+    <path d="M10 8 L20 4 L22 7 L12 11 Z" fill="#C4FFE6"/>
+  </g>
   <text x="572" y="178" font-size="28" font-weight="600" fill="#fff" font-family="system-ui, sans-serif">equisproject</text>
   <!-- Title -->
   <text x="600" y="260" font-size="48" font-weight="700" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif">Aplicaciones</text>

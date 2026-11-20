@@ -43,7 +43,7 @@ export function Sidebar() {
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="sidebar-header">
           <NavLink to="/" className="sidebar-logo" onClick={close}>
-            <span className="sidebar-logo-mark">X</span>
+            <img className="sidebar-logo-mark" src="/favicon.svg" alt="" />
             <span className="sidebar-logo-text">equisproject</span>
           </NavLink>
         </div>
@@ -59,7 +59,7 @@ export function Sidebar() {
               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
-            Inicio
+            <span className="sidebar-link-label">Inicio</span>
           </NavLink>
 
           <div className="sidebar-section">Aplicaciones</div>
@@ -72,7 +72,7 @@ export function Sidebar() {
               onClick={close}
             >
               <AppIcon name={app.icon} color="currentColor" width={18} height={18} />
-              {app.name}
+              <span className="sidebar-link-label" title={app.name}>{app.name}</span>
             </NavLink>
           ))}
         </nav>

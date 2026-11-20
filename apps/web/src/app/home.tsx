@@ -9,7 +9,7 @@ export function Home() {
     <>
       <section className="hero">
         <div className="hero-brand">
-          <span className="hero-brand-mark">X</span>
+          <img className="hero-brand-mark" src="/favicon.svg" alt="" />
           <span className="hero-brand-text">equisproject</span>
         </div>
         <HeroScene />
